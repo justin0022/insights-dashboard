@@ -16,7 +16,13 @@ export const getAggCount = result => {
 
 export const parseToolUse = result => {
   if (result && !isEmpty(result)) {
-    return Object.values(result)[0]
+    return Object.values(result)[0].map((obj, index) => {
+      return {
+        x: index,
+        y: obj['count'],
+        label: obj['object_id']
+      }
+    })
   }
   return null
 }

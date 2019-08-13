@@ -12,7 +12,7 @@ module.exports = {
         }
       }`,
   uniqueCourseToolUsage: `{
-    tools_usage {
+    tools_usage(order_by: {count: desc}, where: {count: {_gt: "1"}}) {
       object_id
       count
     }

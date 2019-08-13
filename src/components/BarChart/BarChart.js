@@ -6,8 +6,9 @@ function BarChart (props) {
   const { data, chartProp } = props
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <VictoryChart
+        style={{ parent: { maxWidth: '70%', margin: '0 auto' } }}
         theme={VictoryTheme.material}
       >
         <VictoryBar

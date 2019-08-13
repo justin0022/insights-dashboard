@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { Card } from '@material-ui/core'
+import { VictoryTooltip } from 'victory'
 
-import { ChartCard, AreaChart } from '../../components'
+import { ChartCard, BarChart } from '../../components'
 import { parseToolUse } from '../../services/caliper/parsers/aggregation'
 import { uniqueCourseToolUsage } from '../../services/caliper/query'
 
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const BarChartCard = ChartCard(AreaChart)
+const BarChartCard = ChartCard(BarChart)
 
 function Course () {
   const classes = useStyles()
@@ -40,8 +41,7 @@ function Course () {
   console.log(toolUseData)
 
   const toolUseProp = {
-    interpolation:'natural',
-    y: 'count'
+    labelComponent: <VictoryTooltip />
   }
 
   return (
@@ -54,8 +54,8 @@ function Course () {
             chartProp={
               toolUseProp
             }
-            md={6}
-            sm={4}
+            md={12}
+            sm={6}
             loaded={!loading}
             title={'In how many unique courses is X tool being used?'} />
         </div>
