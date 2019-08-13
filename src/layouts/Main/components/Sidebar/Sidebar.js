@@ -50,7 +50,7 @@ function Sidebar (props) {
       icon: <CodeIcon />
     },
     {
-      title: 'Graph POC',
+      title: 'GraphQL POC',
       href: '/graph',
       icon: <CodeIcon />
     },
