@@ -16,5 +16,10 @@ module.exports = {
       object_id
       count
     }
+  }`,
+  uniquetools: `{
+    event_toollaunch(distinct_on: object_id, limit: 10) {
+      object_id
+    }
   }`
 }

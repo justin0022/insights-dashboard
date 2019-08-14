@@ -7,6 +7,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import CodeIcon from '@material-ui/icons/Code'
 import ErrorIcon from '@material-ui/icons/Error'
 import BookIcon from '@material-ui/icons/Book'
+import SearchIcon from '@material-ui/icons/Search'
 
 import { SidebarNav } from './components'
 
@@ -58,6 +59,11 @@ function Sidebar (props) {
       title: 'Course',
       href: '/course',
       icon: <BookIcon />
+    },
+    {
+      title: 'Tool Filter',
+      href: '/toolfilter',
+      icon: <SearchIcon />
     },
     {
       title: 'Not Found',

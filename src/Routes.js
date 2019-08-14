@@ -9,7 +9,8 @@ import {
   NotFound as NotFoundView,
   Rest as RestView,
   Graph as GraphView,
-  Course as CourseView
+  Course as CourseView,
+  ToolFilter as ToolFilterView
 } from './views'
 
 function Routes () {
@@ -43,6 +44,12 @@ function Routes () {
         exact
         layout={MainLayout}
         path='/course'
+      />
+      <RouteWithLayout
+        component={ToolFilterView}
+        exact
+        layout={MainLayout}
+        path='/toolfilter'
       />
       <RouteWithLayout
         component={NotFoundView}
