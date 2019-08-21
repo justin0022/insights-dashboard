@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { KeyboardDatePicker } from "@material-ui/pickers";
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
-import { Card } from '@material-ui/core'
+import { Card, Container } from '@material-ui/core'
 import { VictoryTooltip } from 'victory'
 
-import { ChartCard, BarChart } from '../../components'
+import { ChartCard, BarChart, DateRangePicker } from '../../components'
 import { parseToolUse } from '../../services/caliper/parsers/aggregation'
 import { uniqueCourseToolUsage } from '../../services/caliper/query'
 
@@ -16,9 +17,6 @@ const useStyles = makeStyles(theme => ({
   card: {
     flexGrow: 1,
     padding: theme.spacing(8)
-  },
-  inner: {
-    minWidth: 1050
   },
   paper: {
     flexGrow: 1,
@@ -31,6 +29,8 @@ const BarChartCard = ChartCard(BarChart)
 
 function Course () {
   const classes = useStyles()
+  const [dateStart, setDateStart] = useState(new Date())
+  const [dateEnd, setDateEnd] = useState('')
 
   const { loading, error, data } = useQuery(gql`${uniqueCourseToolUsage}`)
   if (error) {
@@ -44,10 +44,21 @@ function Course () {
     labelComponent: <VictoryTooltip />
   }
 
+  console.log(dateStart)
+
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
         <div className={classes.inner}>
+<DateRangePicker />
+
+        {/* <DatePicker
+        label="Basic example"
+        value={dateStart}
+        onChange={setDateStart}
+        animateYearScrolling
+      /> */}
+
           <BarChartCard
             classes={classes}
             data={toolUseData}
