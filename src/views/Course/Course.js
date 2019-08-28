@@ -5,7 +5,7 @@ import { gql } from 'apollo-boost'
 import { Card } from '@material-ui/core'
 import { VictoryTooltip } from 'victory'
 
-import { ChartCard, BarChart, DateRangePicker } from '../../components'
+import { ChartCard, BarChart, DateRangePicker, SearchInput } from '../../components'
 import { parseToolUse } from '../../services/caliper/parsers/aggregation'
 import { uniqueCourseToolUsage } from '../../services/caliper/query'
 
@@ -47,6 +47,8 @@ function Course () {
     <div className={classes.root}>
       <Card className={classes.card}>
         <div className={classes.inner}>
+          <SearchInput />
+
           <DateRangePicker
             state={
               { startDate: [startDate, setDateStart],
