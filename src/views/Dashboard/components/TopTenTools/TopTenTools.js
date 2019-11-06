@@ -44,7 +44,6 @@ const getDataProp = data => {
 
 function LineChart ({ toolTable }) {
   const toolNames = Object.keys(toolTable)
-  console.log(toolTable)
   return (
     <VictoryChart scale={{ x: 'time' }} width={1200}>
       {
