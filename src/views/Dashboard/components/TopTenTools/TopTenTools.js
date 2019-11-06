@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
-import { VictoryChart, VictoryGroup, VictoryLine, VictoryLegend } from 'victory'
+import { VictoryChart, VictoryGroup, VictoryLine, VictoryLegend, VictoryTooltip } from 'victory'
 import { Grid, Paper, Typography } from '@material-ui/core'
 import { Error, Spinner } from '../../../../components'
 
@@ -44,6 +44,7 @@ const getDataProp = data => {
 
 function LineChart ({ toolTable }) {
   const toolNames = Object.keys(toolTable)
+  console.log(toolTable)
   return (
     <VictoryChart scale={{ x: 'time' }} width={1200}>
       {
@@ -52,6 +53,8 @@ function LineChart ({ toolTable }) {
             color={toolTable[toolId]['color']}
             key={toolId}
             data={toolTable[toolId]['data']}
+            labels={() => toolId}
+            labelComponent={<VictoryTooltip renderInPortal />}
           >
             <VictoryLine />
           </VictoryGroup>
